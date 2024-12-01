@@ -59,5 +59,5 @@ Email - ballosadiq@gmail.com
 ## Acknowledgments
 
 - Google LLC for providing the competition data.
-- Kaggle for hosting the competition platform.
+- Kaggle for hosting the competition platform. [Competition Website](https://www.kaggle.com/competitions/playground-series-s4e11/overview)
 - Open-source libraries and the data science community for continuous support.
