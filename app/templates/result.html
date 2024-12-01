@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="result">
+            <p>Treatment Needed: {{ "Yes" if prediction == 1 else "No" }}</p>
+            <p>Probability: {{ probability }}%</p>
+        </div>
+        <a href="{{ url_for('home') }}" class="button">Make Another Prediction</a>
+    </div>
+</body>
+</html> 
