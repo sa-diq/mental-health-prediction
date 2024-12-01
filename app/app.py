@@ -135,6 +135,17 @@ def main():
             st.warning("Based on the provided information, you may be experiencing symptoms of depression. Please consider consulting a mental health professional.")
         else:
             st.info("Based on the provided information, you may not be experiencing depression at this time. However, always consult with a healthcare professional if you have concerns.")
+    
+    # Add footer with creator info
+    st.divider()
+    st.markdown("""
+    <div style='text-align: center; color: grey;'>
+        Created by: Sadiq Balogun<br>
+        Contact: <a href='mailto:ballosadiq@gmail.com'>ballosadiq@gmail.com</a> | 
+        <a href='https://github.com/sa-diq/mental-health-prediction'>GitHub</a> | 
+        <a href='https://linkedin.com/in/sadiq-balogun'>LinkedIn</a> 
+    </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main() 
