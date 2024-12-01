@@ -140,7 +140,7 @@ def main():
     st.divider()
     st.markdown("""
     <div style='text-align: center; color: grey;'>
-        Created by: Sadiq Balogun<br>
+        Created by: Sadiq Balogun ❤️<br>
         Contact: <a href='mailto:ballosadiq@gmail.com'>ballosadiq@gmail.com</a> | 
         <a href='https://github.com/sa-diq/mental-health-prediction'>GitHub</a> | 
         <a href='https://linkedin.com/in/sadiq-balogun'>LinkedIn</a> 
