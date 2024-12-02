@@ -15,6 +15,7 @@ st.set_page_config(
 @st.cache_resource
 def load_model():
     model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'mental_health_classifier_v1.joblib')
+    print(f"Loading model from: {model_path}")
     return joblib.load(model_path)
 
 def main():
