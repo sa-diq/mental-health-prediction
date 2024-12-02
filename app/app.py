@@ -14,9 +14,25 @@ st.set_page_config(
 # Load the model
 @st.cache_resource
 def load_model():
-    model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'mental_health_classifier_v1.joblib')
-    print(f"Loading model from: {model_path}")
-    return joblib.load(model_path)
+    try:
+        # Try direct path first
+        model_path = os.path.join('models', 'mental_health_classifier_v1.joblib')
+        if not os.path.exists(model_path):
+            # Try absolute path from current file
+            model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'models', 'mental_health_classifier_v1.joblib')
+        
+        print(f"Attempting to load model from: {model_path}")
+        print(f"Current working directory: {os.getcwd()}")
+        print(f"Directory contents: {os.listdir()}")
+        
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"Model file not found at {model_path}")
+            
+        return joblib.load(model_path)
+    except Exception as e:
+        st.error(f"Error loading model: {str(e)}")
+        print(f"Error loading model: {str(e)}")
+        raise
 
 def main():
     st.title("🧠 Mental Health Depression Predictor")
