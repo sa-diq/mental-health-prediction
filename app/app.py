@@ -14,34 +14,9 @@ st.set_page_config(
 # Load the model
 @st.cache_resource
 def load_model():
-    try:
-        # List all possible paths
-        possible_paths = [
-            os.path.join('models', 'mental_health_classifier_v1.joblib'),
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'models', 'mental_health_classifier_v1.joblib'),
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models', 'mental_health_classifier_v1.joblib'),
-            '/mount/src/mental-health-prediction/models/mental_health_classifier_v1.joblib'
-        ]
-        
-        print("Debugging information:")
-        print(f"Current working directory: {os.getcwd()}")
-        print(f"Directory contents: {os.listdir()}")
-        print(f"Parent directory contents: {os.listdir('..')}")
-        print("\nTrying these paths:")
-        for path in possible_paths:
-            print(f"Checking {path}: {'EXISTS' if os.path.exists(path) else 'NOT FOUND'}")
-        
-        # Try each path
-        for path in possible_paths:
-            if os.path.exists(path):
-                print(f"Found model at: {path}")
-                return joblib.load(path)
-                
-        raise FileNotFoundError(f"Model file not found in any of the expected locations")
-    except Exception as e:
-        st.error(f"Error loading model: {str(e)}")
-        print(f"Error loading model: {str(e)}")
-        raise
+    model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'mental_health_classifier_v1.joblib')
+    print(f"Loading model from: {model_path}")
+    return joblib.load(model_path)
 
 def main():
     st.title("🧠 Mental Health Depression Predictor")
