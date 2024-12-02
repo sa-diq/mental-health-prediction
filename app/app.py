@@ -34,7 +34,7 @@ def main():
         st.subheader("Professional Information")
         status = st.selectbox("Status", ["Working Professional", "Student"])
         profession = st.text_input("Profession (if Working Professional)")
-        degree = st.selectbox("Degree", ["Undergraduate", "MSc", "Ph.D", "Other"])
+        degree = st.selectbox("Degree", ["Undergraduate", "BSc", "MSc", "Ph.D", "Other"])
         work_study_hours = st.number_input("Work/Study Hours per day", min_value=0, max_value=24, value=8)
 
     st.subheader("Health & Lifestyle")
@@ -51,19 +51,19 @@ def main():
 
     with col4:
         if status == "Working Professional":
-            work_pressure = st.slider("Work Pressure (1-5)", 1, 5, 3)
-            job_satisfaction = st.slider("Job Satisfaction (1-5)", 1, 5, 3)
+            work_pressure = st.slider("Work Pressure (low(1) to high(5))", 1, 5, 3)
+            job_satisfaction = st.slider("Job Satisfaction (low(1) to high(5))", 1, 5, 3)
             academic_pressure = None
             study_satisfaction = None
             cgpa = None
         else:
-            academic_pressure = st.slider("Academic Pressure (1-5)", 1, 5, 3)
-            study_satisfaction = st.slider("Study Satisfaction (1-5)", 1, 5, 3)
+            academic_pressure = st.slider("Academic Pressure (low(1) to high(5))", 1, 5, 3)
+            study_satisfaction = st.slider("Study Satisfaction (low(1) to high(5))", 1, 5, 3)
             cgpa = st.number_input("CGPA", min_value=0.0, max_value=10.0, value=8.0)
             work_pressure = None
             job_satisfaction = None
         
-        financial_stress = st.slider("Financial Stress Level (1-5)", 1, 5, 3)
+        financial_stress = st.slider("Financial Stress Level (low(1) to high(5))", 1, 5, 3)
 
     # Prediction button
     if st.button("Predict", type="primary"):
@@ -92,9 +92,10 @@ def main():
             }[dietary_habits],
             'Degree': {
                 'Undergraduate': 0,
-                'MSc': 1,
-                'PhD': 2,
-                'Other': 3
+                'BSc': 1,
+                'MSc': 2,
+                'PhD': 3,
+                'Other': 4
             }[degree],
             'Have you ever had suicidal thoughts ?': 1 if suicidal_thoughts == "Yes" else 0,
             'Work/Study Hours': float(work_study_hours),
